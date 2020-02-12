@@ -1,0 +1,63 @@
+xrun(64): 18.09-s011: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	18.09-s011: Started on Feb 12, 2020 at 14:42:21 -03
+xrun
+	-64bit
+	-uvm
+	./just_pass_pkg.sv
+	./just_pass_if.sv
+	../rtl/Just_Pass.sv
+	just_pass_top.sv
+	-sv_lib test.so
+	+UVM_TESTNAME=just_pass_test
+	-covtest just_pass_test
+	-access +r
+	-input ./shm.tcl
+	+uvm_set_config_int=*,recording_detail,1
+	-coverage all
+	-covoverwrite
+	-defparam just_pass_top.min_trans=1000
+
+   User defined plus("+") options:
+	+uvm_set_config_int=*,recording_detail,1
+
+Compiling UVM packages (uvm_pkg.sv cdns_uvm_pkg.sv) using uvmhome location /usr/local/cds/XCELIUM1809/tools/methodology/UVM/CDNS-1.1d
+file: ./just_pass_pkg.sv
+package just_pass_pkg;
+                    |
+xmvlog: *W,TSNSPK (./just_pass_pkg.sv,1|20): `timescale is not specified for the package.  The default timescale of 1ns/1ns will be assumed for this package.
+            begin_tr(tr, "just_pass_driver");
+                   |
+xmvlog: *W,FUNTSK (../uvm_verif/just_pass_driver_i.sv,48|19): function called as a task without void'().
+			begin_tr(tr, "just_pass_monitor_i: tr");
+			       |
+xmvlog: *W,FUNTSK (../uvm_verif/just_pass_monitor_i.sv,43|10): function called as a task without void'().
+			begin_tr(tr, "just_pass_monitor_o: tr");
+			       |
+xmvlog: *W,FUNTSK (../uvm_verif/just_pass_monitor_o.sv,44|10): function called as a task without void'().
+      gen_sv_set_param(dpiStruct);
+                     |
+xmvlog: *W,FUNTSK (../uvm_verif/just_pass_refmod.sv,49|21): function called as a task without void'().
+      begin_tr(tr_out, "rfm");
+             |
+xmvlog: *W,FUNTSK (../uvm_verif/just_pass_refmod.sv,73|13): function called as a task without void'().
+    uvm_config_db#(int)::get(this, "", "min_trans", limite);
+                           |
+xmvlog: *W,FUNTSK (../uvm_verif/just_pass_cover.sv,30|27): function called as a task without void'().
+	package worklib.just_pass_pkg:sv
+		errors: 0, warnings: 7
+file: ./just_pass_if.sv
+	interface worklib.just_pass_if:sv
+		errors: 0, warnings: 0
+file: ../rtl/Just_Pass.sv
+	module worklib.Just_Pass:sv
+		errors: 0, warnings: 0
+file: just_pass_top.sv
+	module worklib.just_pass_sc2sv:sv
+		errors: 0, warnings: 0
+	module worklib.just_pass_top:sv
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+xmelab: *F,SCIPLF: Could not find bootstrap function 'scBootstrap' (xmelab: undefined symbol: scBootstrap).
+xrun: *E,ELBERR: Error during elaboration (status 2), exiting.
+TOOL:	xrun(64)	18.09-s011: Exiting on Feb 12, 2020 at 14:42:22 -03  (total: 00:00:01)

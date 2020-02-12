@@ -1,0 +1,10 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-ACCESS
++r
+-COVERAGE
+all
+-DEFPARAM
+just_pass_top.min_trans=1000
