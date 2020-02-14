@@ -8,7 +8,9 @@ module just_pass_top;
 	import just_pass_pkg::*;
 	parameter freq_clk = 50000000;
 	parameter baud_rate = 115200;
-	parameter min_trans = 10;
+	parameter min_trans = 10000;
+
+	int cont=0;
 
 	parameter DATA_WIDTH = 8;
 
@@ -41,11 +43,19 @@ module just_pass_top;
   		rstn = 1;
   		#10 rstn = 0;
   		#10 rstn = 1;
-  		#300 rstn = 0;
-  		#20 rstn = 1;
   	end
 
   	always #3 clk = ~clk;
+
+  	always begin 
+  		cont ++;
+  		if (cont == 200) begin
+  			cont = 0;
+  			rstn = 0;
+  			#20 rstn = 1;
+  		end
+  		@(posedge clk);
+  	end
 
 	initial begin
 		`ifdef XCELIUM

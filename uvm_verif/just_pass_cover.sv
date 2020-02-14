@@ -46,7 +46,7 @@ class just_pass_cover extends uvm_component;
     resp_cover.sample();
 
     //$display("cobertura:%d",$get_coverage());
-    if(($get_coverage() == 100) || (cont == limite+1))
+    if((cont == 30000))
       uvm_main_phase::get().drop_objection(this);
   endfunction: write
 endclass : just_pass_cover

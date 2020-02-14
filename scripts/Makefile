@@ -8,7 +8,7 @@ IFS 			= ../uvm_verif/just_pass_if.sv
 PKGS 			= ../uvm_verif/just_pass_pkg.sv
 RTL = ../rtl/Just_Pass.sv 
 
-MIN_TRANSA = 1000
+MIN_TRANSA = 10000
 
 NOME_DO_TESTE = just_pass_test
 RUN_ARGS_COMMON = 	+UVM_TESTNAME=$(NOME_DO_TESTE) -covtest $(NOME_DO_TESTE) \

@@ -25,6 +25,8 @@ class just_pass_refmod extends uvm_component;
   
   event begin_record, end_record, begin_refmodtask;
 
+  int val_passado, bool_passado;
+
   
 //======================= Construtor =======================================
   function new(string name = "just_pass_refmod", uvm_component parent);
@@ -44,6 +46,16 @@ class just_pass_refmod extends uvm_component;
   
   task reset_phase(uvm_phase phase);
     phase.raise_objection(this);
+    val_passado = 0;
+    bool_passado = 0;
+
+
+      dpiStruct.a = 0;
+      dpiStruct.b = 0;
+      gen_sv_set_param(dpiStruct);
+      dpiStruct.a = 0;
+      dpiStruct.b = 0;
+      gen_sv_set_param(dpiStruct);
       dpiStruct.a = 0;
       dpiStruct.b = 0;
       gen_sv_set_param(dpiStruct);
@@ -61,19 +73,27 @@ class just_pass_refmod extends uvm_component;
     tr_in = tr_type_in::type_id::create("tr_in", this);
     tr_in.copy(t);
 
+      begin_tr(tr_out, "rfm");
    -> begin_refmodtask;
   endfunction
 
 //============ Função para analisar leitura/escrita ========================
   task refmod_task();
-      tr_out = tr_type_out::type_id::create("tr_out", this);
     forever 
     begin
+      tr_out = tr_type_out::type_id::create("tr_out", this);
       @begin_refmodtask;
-      begin_tr(tr_out, "rfm");
         dpiStruct.a = tr_in.data_i;
+        // dpiStruct.b = bool_passado;
+
+        // val_passado   = gen_sv_pass_val(dpiStruct);
         tr_out.data_o = gen_sv_pass_val(dpiStruct);
+
+
+        //bool_passado  = gen_sv_pass_bool(dpiStruct);
         tr_out.bool_o = gen_sv_pass_bool(dpiStruct);
+
+        #1;
       end_tr(tr_out, "rfm");
       refmod_just_pass_o_tr_analysis_port.write(tr_out);
     end

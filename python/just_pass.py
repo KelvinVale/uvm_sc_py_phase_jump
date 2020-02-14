@@ -17,10 +17,11 @@ class just_pass:
 
 	def pass_bool (self, data1_i):
 		# print("Hello World, I'm here mf, at pass_bool function in python bool_val before   ", self.data2_i)
+		# self.data2_i = data1_i
 		if (self.data2_i == 1):
 			self.data2_i = 0
 		else:
 			self.data2_i = 1
-			pass
+			# pass
 		# print("Hello World, I'm here mf, at pass_bool function in python bool_val after   ", self.data2_i)
 		return self.data2_i
