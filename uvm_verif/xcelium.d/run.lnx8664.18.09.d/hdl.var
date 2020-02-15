@@ -1,6 +1,0 @@
-define XMSIMRC	( /usr/local/cds/XCELIUM1809/tools/xcelium/files/xmsimrc, ~/.xmsimrc )
-include ./hdlrun.var
-define SNAPSHOT worklib.just_pass_top:sv
-DEFINE RUNMODEDEFAULT 1
-DEFINE LIB_MAP (  => worklib )
-DEFINE LIB_MAP ($LIB_MAP, + => worklib )
