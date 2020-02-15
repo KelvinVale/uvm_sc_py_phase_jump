@@ -63,6 +63,7 @@ class just_pass_refmod extends uvm_component;
   endtask : reset_phase
 
   task main_phase(uvm_phase phase);
+
       fork
         refmod_task();
       join
@@ -81,20 +82,15 @@ class just_pass_refmod extends uvm_component;
   task refmod_task();
     forever 
     begin
+      tr_out = null;
       tr_out = tr_type_out::type_id::create("tr_out", this);
       @begin_refmodtask;
         dpiStruct.a = tr_in.data_i;
-        // dpiStruct.b = bool_passado;
 
-        // val_passado   = gen_sv_pass_val(dpiStruct);
         tr_out.data_o = gen_sv_pass_val(dpiStruct);
-
-
-        //bool_passado  = gen_sv_pass_bool(dpiStruct);
         tr_out.bool_o = gen_sv_pass_bool(dpiStruct);
-
-        #1;
       end_tr(tr_out, "rfm");
+        // #1;
       refmod_just_pass_o_tr_analysis_port.write(tr_out);
     end
   endtask

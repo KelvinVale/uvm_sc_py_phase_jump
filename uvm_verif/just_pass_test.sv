@@ -28,6 +28,7 @@ class just_pass_test extends uvm_test;
       forever 
       begin 
         @(negedge vif.rstn)
+        // #1;
         phase.jump(uvm_pre_reset_phase::get());
       end
     join

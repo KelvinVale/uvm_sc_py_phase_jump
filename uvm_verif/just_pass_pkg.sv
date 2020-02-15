@@ -2,6 +2,9 @@ package just_pass_pkg;
 	`include "uvm_macros.svh"
 	import uvm_pkg::*;
 
+`include "../uvm_verif/uvm_in_order_comparator_kelvin.sv"
+// `include "../uvm_verif/uvm_in_order_class_comparator_kelvin.sv"
+
 `include "../uvm_verif/just_pass_transaction_i.sv"
 `include "../uvm_verif/just_pass_transaction_o.sv"
 `include "../uvm_verif/just_pass_sequence_i.sv"

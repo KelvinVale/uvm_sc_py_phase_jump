@@ -1,5 +1,6 @@
 
 from collections import deque
+import numpy
 
 class just_pass:
 	def __init__ (self):
