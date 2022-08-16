@@ -68,8 +68,10 @@ extern "C" void gen_set_param(DpiStructGEN *dpiStruct){
         exit(1); 
     }
 
-    Py_XDECREF(a        ); 
-    Py_XDECREF(b        ); 
+    Py_XDECREF(pBlockMethod  ); 
+    Py_XDECREF(pMethodReturn );
+    Py_XDECREF(a ); 
+    Py_XDECREF(b ); 
 }
 
 extern "C"  int just_pass_val(DpiStructGEN *dpiStruct){
@@ -93,7 +95,9 @@ extern "C"  int just_pass_val(DpiStructGEN *dpiStruct){
 
     ret_val = int(PyFloat_AsDouble(pMethodReturn));
 
-
+    Py_XDECREF(pBlockMethod  ); 
+    Py_XDECREF(pMethodReturn );
+    Py_XDECREF(a ); 
 
     return ret_val;
 }
@@ -119,6 +123,9 @@ extern "C"  bool just_pass_bool(DpiStructGEN *dpiStruct){
 
     ret_bool = bool(PyFloat_AsDouble(pMethodReturn));
 
+    Py_XDECREF(pBlockMethod  ); 
+    Py_XDECREF(pMethodReturn );
+    Py_XDECREF(b ); 
 
     return ret_bool;
 }
@@ -126,5 +133,4 @@ extern "C"  bool just_pass_bool(DpiStructGEN *dpiStruct){
 extern "C" void gen_end_python()
     {
         Py_Finalize();
-       // printf("\n PYTHON FINALIZED: GEN_DATA\n\n");
     }
